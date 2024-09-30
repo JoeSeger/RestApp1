@@ -102,10 +102,10 @@ namespace RESTApp1
 
             return  new WeatherResponse
             {
-                CityName = json["name"].ToString(),
-                Temperature = float.Parse(json["main"]["temp"].ToString()),
-                Description = json["weather"][0]["description"].ToString()
-            }; ;
+                CityName = json["name"]?.ToString(),
+                Temperature = float.Parse(json["main"]?["temp"]?.ToString() ?? string.Empty),
+                Description = json["weather"]?[0]?["description"]?.ToString()
+            };
         }
     }
 }
